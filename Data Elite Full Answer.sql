@@ -1,0 +1,121 @@
+-- Return data
+SELECT *
+FROM Orderid
+
+-- orders data
+SELECT *
+FROM orders
+
+--User data
+SELECT *
+FROM region
+
+1. --• BASIC QUERIES: Write SQL queries to retrieve the total number of orders, customers, and products in the dataset.
+SELECT Customer_Name,
+       product_name,
+	   SUM(quantity_ordered_new) AS Total_Orders
+FROM Orders
+GROUP BY Customer_Name,
+          product_name;
+
+/*2. Sales Metrics:
+•	Calculate and display the total sales, average discount, and profit for each product category.
+•	Order the results by total sales in descending order.*/
+
+SELECT Product_Category,
+       Sum(Sales) AS Total_Sales,
+       ROUND(AVG(discount),3) AS Avg_discount,
+	   ROUND(SUM(profit),2) AS Total_profit
+FROM Orders
+GROUP BY product_category
+ORDER BY Total_sales DESC;
+
+/*3. Customer Analysis:
+•	Identify the top 10 customers with the highest total sales.
+•	Calculate the average order value for each customer segment.*/
+
+--A. Identify the top 10 customers with the highest total sales.
+SELECT Customer_Name,
+       SUM(sales) AS Total_Sales
+FROM Orders
+GROUP BY Customer_Name
+ORDER BY Total_Sales DESC
+LIMIT 10;
+
+--B. Calculate the average order value for each customer segment.*/
+SELECT Customer_Segment,
+       ROUND(AVG(quantity_ordered_new),2) AS AVG_Ordered_Value
+FROM orders
+GROUP BY Customer_Segment
+
+/*Temporal Analysis:
+•	Analyze the sales trend over time by displaying the monthly sales for each year in the dataset.
+•	Identify the month with the highest sales.*/
+
+-- 4A.Analyze the sales trend over time by displaying the monthly sales for each year in the dataset.
+SELECT TO_CHAR(order_date,'Month') AS Month_Name,
+       EXTRACT(Month FROM order_date) AS month,
+       EXTRACT(Year FROM order_date) AS Year,
+	   SUM(sales) AS Total_Sales
+       FROM Orders
+       GROUP BY EXTRACT(Month FROM order_date),
+	            EXTRACT(Year FROM order_date),
+		        TO_CHAR(order_date,'Month')
+ORDER BY year,month;
+
+--B. Identify the month with the highest sales
+SELECT TO_CHAR(order_date,'Month') AS Month_Name,
+       EXTRACT(Month FROM order_date) AS month,
+	   SUM(sales) AS Total_Sales
+FROM Orders
+GROUP BY TO_CHAR(order_date,'Month'),
+       EXTRACT(Month FROM order_date)
+ORDER BY Total_Sales DESC
+LIMIT 1;
+
+/5 *Product Performance:
+•	Determine the top 5 best-selling products based on the quantity sold.
+•	Calculate the profit margin for each product and display the results.*/
+
+SELECT product_name,
+       SUM(quantity_ordered_new) AS quantity_sold
+FROM Orders
+GROUP BY product_name
+ORDER BY quantity_sold DESC
+LIMIT 5;
+
+-- Calculate the profit margin for each product and display the results.
+SELECT product_Name,
+       ROUND((profit/sales) *100,2) AS profit_Margin
+FROM Orders;
+
+/6 *Discount Analysis:
+•	Analyze the impact of discounts on sales and profit.
+•	Calculate the average discount for each product category.*/
+
+--•	Analyze the impact of discounts on sales and profit.
+SELECT CASE WHEN discount > 0 THEN 'With Discount'
+       ELSE 'Without Discount'
+	   END AS Discount_Category,
+	   ROUND(SUM(Sales),2)AS Total_Sales,
+	   ROUND(SUM(Profit),2) AS Total_Profit,
+       ROUND(AVG(sales),2) AS Avg_Sales,
+	   ROUND(AVG(profit),2) AS Avgg_Profit
+FROM orders
+GROUP BY Discount_Category
+
+-- • Calculate the average discount for each product category.
+
+SELECT Product_category,
+       ROUND(AVG(discount),3) AS Avg_discount
+FROM Orders
+GROUP BY product_category
+
+/*Customer Segmentation (Bonus):
+•	Create a segmentation analysis by dividing customers into different groups based on their total purchases.
+•	Provide insights into the characteristics of each customer group.*/
+
+SELECT Customer_segment,
+       ROUND(SUM(Sales),2) AS Total_sales
+FROM orders
+GROUP BY Customer_segment
