@@ -1,15 +1,3 @@
--- Return data
-SELECT *
-FROM Orderid
-
--- orders data
-SELECT *
-FROM orders
-
---User data
-SELECT *
-FROM region
-
 1. --• BASIC QUERIES: Write SQL queries to retrieve the total number of orders, customers, and products in the dataset.
 SELECT Customer_Name,
        product_name,
