@@ -8,7 +8,7 @@ The Elites Super Store(ESS) data is a distinguished retail establishment, is com
 
 ## Brief Overview of the Dataset
 
-An excel file which contained 3 worksheet was supplied. The worksheets contained orders,returns and users data
+An excel file which contained 3 worksheet was supplied. The worksheets contained orders,returns and users data. All code being documented on Readme file
 
 ## Data Source
 
