@@ -57,6 +57,7 @@ It was observed that Yvonne Mann has the highest order, 167 of product Economy R
 ### 2. Sales Metrics
    
 •	Calculate and display the total sales, average discount, and profit for each product category.
+
 •	Order the results by total sales in descending order.
 
 ### Insight
@@ -66,6 +67,7 @@ In order to evaluate ESS sales metrics, ESS data was ordered by product categori
 ### 3. Customer Analysis
    
 •	Identify the top 10 customers with the highest total sales.
+
 •	Calculate the average order value for each customer segment.
 
 ### Insight 
@@ -75,7 +77,9 @@ In the process of finding out the top 10 customers with the highest sales it was
 ### 4. Temporal Analysis
    
 •	Analyze the sales trend over time by displaying the monthly sales for each year in the dataset.
+
 •	Identify the month with the highest sales.
+
 •	Analyze the sales trend over time by displaying the monthly sales for each year in the dataset.
 
 ### Insight
@@ -85,6 +89,7 @@ In order to understand the trend of time that ESS products was sold from the ext
 ### 5. Product Performance
    
 •	Determine the top 5 best-selling products based on the quantity sold.
+
 •	Calculate the profit margin for each product and display the results.
 
 ### Insight 
@@ -94,6 +99,7 @@ From the data pool used for this project, there are 1,952 products sold by ESS, 
 ### 6. Discount Analysis
 
 •	Analyze the impact of discounts on sales and profit.
+
 •	Calculate the average discount for each product category.
 
 ### Insight 
@@ -103,6 +109,7 @@ In order to analyze the impact of discount on sales and profit of ESS products. 
 ### 7. Customer Segmentation (Bonus)
 
 •	Create a segmentation analysis by dividing customers into different groups based on their total purchases.
+
 •	Provide insights into the characteristics of each customer group.
 
 ### Insight
